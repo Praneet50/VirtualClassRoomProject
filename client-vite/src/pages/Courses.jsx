@@ -15,9 +15,12 @@ function Courses() {
     const fetchCourses = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/courses", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          "https://virtualclassroomproject.onrender.com/api/courses",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         // Filter the courses to only include those created by the logged-in user
         const userCourses = res.data.filter(
@@ -39,7 +42,7 @@ function Courses() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5000/api/courses",
+        "https://virtualclassroomproject.onrender.com/api/courses",
         { name: courseName, description: courseDescription },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -121,4 +124,3 @@ function Courses() {
 }
 
 export default Courses;
-  

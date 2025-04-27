@@ -13,9 +13,12 @@ function QuizAttempt() {
     const fetchQuiz = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:5000/api/quizzes/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          `https://virtualclassroomproject.onrender.com/api/quizzes/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setQuiz(res.data);
       } catch (error) {
         setError("Error fetching quiz.");
@@ -36,7 +39,7 @@ function QuizAttempt() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        `http://localhost:5000/api/quizzes/${id}/submit`,
+        `https://virtualclassroomproject.onrender.com/api/quizzes/${id}/submit`,
         { answers },
         { headers: { Authorization: `Bearer ${token}` } }
       );

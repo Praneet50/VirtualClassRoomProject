@@ -15,9 +15,12 @@ function CourseDetail() {
     const fetchCourse = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:5000/api/courses/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          `https://virtualclassroomproject.onrender.com/api/courses/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setCourse(res.data);
         setName(res.data.name);
         setDescription(res.data.description);
@@ -35,7 +38,7 @@ function CourseDetail() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `http://localhost:5000/api/courses/${id}`,
+        `https://virtualclassroomproject.onrender.com/api/courses/${id}`,
         { name, description, content },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -55,7 +58,7 @@ function CourseDetail() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        `http://localhost:5000/api/courses/${id}/upload`,
+        `https://virtualclassroomproject.onrender.com/api/courses/${id}/upload`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

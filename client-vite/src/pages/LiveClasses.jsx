@@ -27,9 +27,12 @@ function LiveClasses() {
     const fetchLiveClasses = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/liveclasses", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          "https://virtualclassroomproject.onrender.com/api/liveclasses",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         // Only filter if user exists and has an email
         const filteredLiveClasses = res.data.filter((liveClass) => {
@@ -61,7 +64,7 @@ function LiveClasses() {
       };
 
       const res = await axios.post(
-        "http://localhost:5000/api/liveclasses",
+        "https://virtualclassroomproject.onrender.com/api/liveclasses",
         liveClassData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -112,7 +115,7 @@ function LiveClasses() {
       }
 
       const response = await axios.post(
-        `http://localhost:5000/api/liveclasses/${id}/join`,
+        `https://virtualclassroomproject.onrender.com/api/liveclasses/${id}/join`,
         { userId: user._id, username: user.name },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -23,9 +23,12 @@ function CourseDisplay() {
     const fetchCourse = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:5000/api/courses/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          `https://virtualclassroomproject.onrender.com/api/courses/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setCourse(res.data);
       } catch (error) {
         console.error("Error fetching course:", error);

@@ -28,9 +28,12 @@ function Home() {
         const token = localStorage.getItem("token");
 
         // Fetch Courses (only for the logged-in user)
-        const courseRes = await axios.get("http://localhost:5000/api/courses", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const courseRes = await axios.get(
+          "https://virtualclassroomproject.onrender.com/api/courses",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         // Filter courses to only show those created by the logged-in user
         const userCourses = courseRes.data.filter(
           (course) => course.creator === user.id
@@ -39,7 +42,7 @@ function Home() {
 
         // Fetch Live Classes
         const liveClassRes = await axios.get(
-          "http://localhost:5000/api/liveclasses",
+          "https://virtualclassroomproject.onrender.com/api/liveclasses",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -47,9 +50,12 @@ function Home() {
         setLiveClasses(liveClassRes.data.slice(0, 3)); // Limit to first 3 live classes
 
         // Fetch Quizzes
-        const quizRes = await axios.get("http://localhost:5000/api/quizzes", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const quizRes = await axios.get(
+          "https://virtualclassroomproject.onrender.com/api/quizzes",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setQuizzes(quizRes.data.slice(0, 3)); // Limit to first 3 quizzes
       } catch (error) {
         console.error("Error fetching data:", error);

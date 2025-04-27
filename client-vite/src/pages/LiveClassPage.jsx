@@ -28,7 +28,7 @@ const LiveClassPage = () => {
     }
 
     if (!socketRef.current) {
-      socketRef.current = io("http://localhost:5000", {
+      socketRef.current = io("https://virtualclassroomproject.onrender.com", {
         transports: ["websocket"],
       });
     }

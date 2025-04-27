@@ -18,9 +18,12 @@ function MySection() {
         const token = localStorage.getItem("token");
 
         // Fetch all Courses, filter by creator
-        const courseRes = await axios.get("http://localhost:5000/api/courses", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const courseRes = await axios.get(
+          "https://virtualclassroomproject.onrender.com/api/courses",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         const userCourses = courseRes.data.filter(
           (course) => course.creator === user.id
         );
@@ -28,7 +31,7 @@ function MySection() {
 
         // Fetch Live Classes, filter by creator
         const liveClassRes = await axios.get(
-          "http://localhost:5000/api/liveclasses",
+          "https://virtualclassroomproject.onrender.com/api/liveclasses",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -39,9 +42,12 @@ function MySection() {
         setLiveClasses(userLiveClasses);
 
         // Fetch Quizzes, filter by creator
-        const quizRes = await axios.get("http://localhost:5000/api/quizzes", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const quizRes = await axios.get(
+          "https://virtualclassroomproject.onrender.com/api/quizzes",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         const userQuizzes = quizRes.data.filter(
           (quiz) => quiz.creator === user.id
         );
@@ -63,19 +69,28 @@ function MySection() {
 
       // Delete request based on the type of item
       if (type === "course") {
-        await axios.delete(`http://localhost:5000/api/courses/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.delete(
+          `https://virtualclassroomproject.onrender.com/api/courses/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setCourses(courses.filter((course) => course._id !== id));
       } else if (type === "liveClass") {
-        await axios.delete(`http://localhost:5000/api/liveclasses/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.delete(
+          `https://virtualclassroomproject.onrender.com/api/liveclasses/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setLiveClasses(liveClasses.filter((liveClass) => liveClass._id !== id));
       } else if (type === "quiz") {
-        await axios.delete(`http://localhost:5000/api/quizzes/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.delete(
+          `https://virtualclassroomproject.onrender.com/api/quizzes/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setQuizzes(quizzes.filter((quiz) => quiz._id !== id));
       }
     } catch (error) {

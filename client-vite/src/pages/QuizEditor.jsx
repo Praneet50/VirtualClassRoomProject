@@ -17,7 +17,7 @@ function QuizEditor() {
       setLoading(true);
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:5000/api/quizzes/${id}`, {
+        const res = await axios.get(`https://virtualclassroomproject.onrender.com/api/quizzes/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setQuiz(res.data);
@@ -48,7 +48,7 @@ function QuizEditor() {
       };
 
       const res = await axios.post(
-        `http://localhost:5000/api/quizzes/${id}/add-question`,
+        `https://virtualclassroomproject.onrender.com/api/quizzes/${id}/add-question`,
         newQuestion,
         { headers: { Authorization: `Bearer ${token}` } }
       );

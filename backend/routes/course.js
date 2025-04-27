@@ -121,7 +121,7 @@ router.post("/:id/upload", auth, upload.single("file"), async (req, res) => {
     // Add the file to the course materials
     course.materials.push({
       filename: req.file.originalname,
-      fileUrl: `http://localhost:5000/upload/${req.file.filename}`,
+      fileUrl: `https://virtualclassroomproject.onrender.com/upload/${req.file.filename}`,
     });
 
     await course.save();

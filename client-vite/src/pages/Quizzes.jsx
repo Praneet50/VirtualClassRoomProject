@@ -25,7 +25,7 @@ function Quizzes() {
       try {
         if (!user) return;
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/quizzes", {
+        const res = await axios.get("https://virtualclassroomproject.onrender.com/api/quizzes", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -49,7 +49,7 @@ function Quizzes() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5000/api/quizzes",
+        "https://virtualclassroomproject.onrender.com/api/quizzes",
         {
           name: quizName,
           topic: quizTopic,

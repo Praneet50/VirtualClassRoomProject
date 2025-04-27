@@ -27,9 +27,18 @@ function EnrollSection() {
         const config = { headers: { Authorization: `Bearer ${token}` } };
 
         const [c, l, q] = await Promise.all([
-          axios.get("http://localhost:5000/api/courses", config), // backend we added
-          axios.get("http://localhost:5000/api/liveclasses/mine", config),
-          axios.get("http://localhost:5000/api/quizzes/mine", config),
+          axios.get(
+            "https://virtualclassroomproject.onrender.com/api/courses",
+            config
+          ), // backend we added
+          axios.get(
+            "https://virtualclassroomproject.onrender.com/api/liveclasses/mine",
+            config
+          ),
+          axios.get(
+            "https://virtualclassroomproject.onrender.com/api/quizzes/mine",
+            config
+          ),
         ]);
 
         // hide the things I created – we only want invites
@@ -55,7 +64,7 @@ function EnrollSection() {
       const config = { headers: { Authorization: `Bearer ${token}` } };
 
       const response = await axios.post(
-        `http://localhost:5000/api/courses/${courseId}/enroll`,
+        `https://virtualclassroomproject.onrender.com/api/courses/${courseId}/enroll`,
         {},
         config
       );
@@ -99,7 +108,6 @@ function EnrollSection() {
     try {
       const token = localStorage.getItem("token");
       const config = { headers: { Authorization: `Bearer ${token}` } };
-
 
       // Navigate to the quiz page
       navigate(`/quiz/${quizId}`);
