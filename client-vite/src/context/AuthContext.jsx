@@ -15,18 +15,24 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    const { data } = await axios.post("/api/auth/login", { email, password });
+    const { data } = await axios.post(
+      "https://virtualclassroomproject.onrender.com/api/auth/login",
+      { email, password }
+    );
     setUser(data.user);
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
   };
 
   const register = async (name, email, password) => {
-    const { data } = await axios.post("/api/auth/register", {
-      name,
-      email,
-      password,
-    });
+    const { data } = await axios.post(
+      "https://virtualclassroomproject.onrender.com/api/auth/register",
+      {
+        name,
+        email,
+        password,
+      }
+    );
     setUser(data.user);
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
