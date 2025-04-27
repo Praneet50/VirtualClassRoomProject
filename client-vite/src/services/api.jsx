@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "/api" });
+const API = axios.create({
+  baseURL: "https://virtualclassroomproject.onrender.com",
+});
 
 // Register API
 export const registerUser = (userData) => API.post("/auth/register", userData);
