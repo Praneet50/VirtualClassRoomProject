@@ -5,7 +5,15 @@ const API = axios.create({
 });
 
 // Register API
-export const registerUser = (userData) => API.post("/auth/register", userData);
+export const registerUser = (userData) =>
+  API.post(
+    "https://virtualclassroomproject.onrender.com/auth/register",
+    userData
+  );
 
 // Login API
-export const loginUser = (credentials) => API.post("/auth/login", credentials);
+export const loginUser = (credentials) =>
+  API.post(
+    "https://virtualclassroomproject.onrender.com/auth/login",
+    credentials
+  );
